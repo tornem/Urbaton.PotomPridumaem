@@ -1,7 +1,7 @@
 <template>
   <v-container class="user">
     <div
-      v-if="selectedUser.length === 0"
+      v-if="JSON.stringify(user) == '{}'"
       class="error-block"
     >
       <span>Пользователь не найден</span>
@@ -20,7 +20,7 @@
                 size="150px"
                 color="green lighten-4"
               >
-                {{selectedUser.username | firstLetter}}
+                {{user.first_name | firstLetter}}
               </v-avatar>
             </v-flex>
             <v-flex class="display-3">
@@ -28,7 +28,7 @@
                 class="ratio"
               >
                 <div class="ml-2 grey--text text--darken-2">
-                  <span>{{selectedUser.ratio}}</span>
+                  <span>{{user.score}}</span>
                 </div>
                 <v-icon
                   class="star"
@@ -40,43 +40,45 @@
             </v-flex>
           </v-layout>
           <v-flex mb-3 class="display-1">
-            {{selectedUser.username}}
+            {{user.first_name}} {{user.last_name}}
           </v-flex>
-          <!--<v-flex mb-3 class="display-1">-->
-            <!--{{selectedUser.last_name}} {{selectedUser.first_name}}-->
-          <!--</v-flex>-->
         </v-layout>
       </v-flex>
 
       <v-flex class="achievement elevation-4">
         <v-list two-line subheader>
-          <v-list-tile
-            v-for="(item, i) in selectedUser.achievements"
-            :key="item.id"
-            avatar
-          >
-            <v-list-tile-avatar>
-              <img :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`">
-            </v-list-tile-avatar>
-
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.name }}</v-list-tile-title>
-              <v-list-tile-sub-title>{{ item.date }}</v-list-tile-sub-title>
-            </v-list-tile-content>
-
-            <div
-              class="achievement-cost"
+          <template  v-if="user.achievements.length > 0">
+            <v-list-tile
+              v-for="(item, i) in user.achievements"
+              :key="item.id"
+              avatar
             >
-              <div class="ml-2 grey--text text--darken-2">
-                <span>{{item.cost}}</span>
-              </div>
-              <v-icon
-                color="yellow darken-2"
+              <v-list-tile-avatar>
+                <img :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`">
+              </v-list-tile-avatar>
+
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+                <v-list-tile-sub-title>{{ item.date }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+
+              <div
+                class="achievement-cost"
               >
-                star
-              </v-icon>
-            </div>
-          </v-list-tile>
+                <div class="ml-2 grey--text text--darken-2">
+                  <span>{{item.cost}}</span>
+                </div>
+                <v-icon
+                  color="yellow darken-2"
+                >
+                  star
+                </v-icon>
+              </div>
+            </v-list-tile>
+          </template>
+           <v-list-tile>
+             Ачивок еще нет
+           </v-list-tile>
         </v-list>
       </v-flex>
     </v-layout>
@@ -84,119 +86,31 @@
 </template>
 
 <script>
+import getDataById from '@/helpers/getDataById';
+
 export default {
   name: 'User',
+  mixins: [
+    getDataById,
+  ],
   data() {
     return {
-      users: [
-        {
-          user_id: 116467,
-          username: 'Юрасов Богдан',
-          first_name: 'Богдан',
-          last_name: 'Юрасов',
-          data_reg: '16 января',
-          ratio: 1,
-          achievements: [
-            {
-              id: 'id1',
-              name: 'ачивка номер 1',
-              date: '16 января',
-              cost: 15,
-            },
-            {
-              id: 'id2',
-              name: 'ачивка номер 2',
-              date: '16 января',
-              cost: 15,
-            },
-            {
-              id: 'id3',
-              name: 'ачивка номер 2',
-              date: '16 января',
-              cost: 15,
-            },
-            {
-              id: 'id1111',
-              name: 'ачивка номер 1',
-              date: '16 января',
-              cost: 15,
-            },
-            {
-              id: 'id2111',
-              name: 'ачивка номер 2',
-              date: '16 января',
-              cost: 15,
-            },
-            {
-              id: 'id311111',
-              name: 'ачивка номер 2',
-              date: '16 января',
-              cost: 15,
-            },
-            {
-              id: 'id12224',
-              name: 'ачивка номер 1',
-              date: '16 января',
-              cost: 15,
-            },
-            {
-              id: 'id2346',
-              name: 'ачивка номер 2',
-              date: '16 января',
-              cost: 15,
-            },
-            {
-              id: 'id34572345',
-              name: 'ачивка номер 2',
-              date: '16 января',
-              cost: 15,
-            },
-          ],
-        },
-        {
-          user_id: 113963,
-          username: 'Астахов Афанасий',
-          first_name: 'Афанасий',
-          last_name: 'Астахов',
-          data_reg: '6 мая',
-          ratio: 1,
-          achievements: [
-            {
-              id: 'id11',
-              name: 'ачивка номер 1',
-              cost: 15,
-            },
-            {
-              id: 'id21',
-              name: 'ачивка номер 2',
-              cost: 15,
-            },
-            {
-              id: 'id13',
-              name: 'ачивка номер 2',
-              cost: 15,
-            },
-          ],
-        },
-      ],
+      user: {},
     };
   },
   filters: {
     firstLetter(text) {
-      return text.substr(0, 1).toUpperCase();
+      if (text) {
+        return text.substr(0, 1).toUpperCase();
+      }
+      return '';
     },
   },
-  computed: {
-    id() {
-      console.log();
-    },
-    selectedUser() {
-      const { users } = this;
-      const userId = Number(this.$route.params.id);
-      const selectedUser = users.filter(item => item.user_id === userId);
+  async created() {
+    const id = Number(this.$route.params.id);
+    const user = await this.getDataById('user/', id);
 
-      return selectedUser.length === 0 ? [] : selectedUser[0];
-    },
+    this.user = Object.assign({}, this.user, user);
   },
 };
 </script>
