@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+.idea/
+.idea/workspace.xml
 
 # local env files
 .env.local
