@@ -72,27 +72,81 @@
 export default {
   data() {
     return {
-      users: [
-        {
-          user_id: '1',
-          username: 'Иван',
-          ratio: '1',
-        },
-        {
-          user_id: '2',
-          username: 'Дмитрий',
-          ratio: '2',
-        },
-        {
-          user_id: '3',
-          username: 'Олег',
-          ratio: '3',
-        },
-        {
-          user_id: '4',
-          username: 'Колобок',
-          ratio: '4',
-        },
+      users: [{
+        user_id: 116467,
+        username: 'Юрасов Богдан',
+        ratio: 9742,
+      },
+      {
+        user_id: 113963,
+        username: 'Астахов Афанасий',
+        ratio: 9485,
+      },
+      {
+        user_id: 116294,
+        username: 'Торсунов Фома',
+        ratio: 9196,
+      },
+      {
+        user_id: 111829,
+        username: 'Яркова Евгения',
+        ratio: 9174,
+      },
+      {
+        user_id: 117416,
+        username: 'Цой Юлия',
+        ratio: 8660,
+      },
+      {
+        user_id: 114642,
+        username: 'Филипов Венедикт',
+        ratio: 8351,
+      },
+      {
+        user_id: 118912,
+        username: 'Балинский Ян',
+        ratio: 7971,
+      },
+      {
+        user_id: 113115,
+        username: 'Федченкова Ираида',
+        ratio: 7936,
+      },
+      {
+        user_id: 118006,
+        username: 'Мурогова Полина',
+        ratio: 7901,
+      },
+      {
+        user_id: 112427,
+        username: 'Рыжанова Ксения',
+        ratio: 7731,
+      },
+      {
+        user_id: 118755,
+        username: 'Юхтриц Ефрем',
+        ratio: 7560,
+      },
+      {
+        user_id: 112790,
+        username: 'Храмов Георгий',
+        ratio: 6980,
+      },
+      {
+        user_id: 113326,
+        username: 'Талызин Наум',
+        ratio: 6954,
+      },
+      {
+        user_id: 113442,
+        username: 'Буркина Анастасия',
+        ratio: 6175,
+      },
+      {
+        user_id: 118915,
+        username: 'Покровская Софья',
+        ratio: 6174,
+      },
       ],
       searchQuery: '',
     };

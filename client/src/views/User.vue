@@ -42,9 +42,9 @@
           <v-flex mb-3 class="display-1">
             {{selectedUser.username}}
           </v-flex>
-          <v-flex mb-3 class="display-1">
-            {{selectedUser.first_name}} {{selectedUser.last_name}}
-          </v-flex>
+          <!--<v-flex mb-3 class="display-1">-->
+            <!--{{selectedUser.last_name}} {{selectedUser.first_name}}-->
+          <!--</v-flex>-->
         </v-layout>
       </v-flex>
 
@@ -90,10 +90,10 @@ export default {
     return {
       users: [
         {
-          user_id: 1,
-          username: 'Иван',
-          first_name: 'Иван',
-          last_name: 'Иванов',
+          user_id: 116467,
+          username: 'Юрасов Богдан',
+          first_name: 'Богдан',
+          last_name: 'Юрасов',
           data_reg: '16 января',
           ratio: 1,
           achievements: [
@@ -154,10 +154,10 @@ export default {
           ],
         },
         {
-          user_id: 2,
-          username: 'Дмитрий',
-          first_name: 'Дмитрий',
-          last_name: 'Дмитриев',
+          user_id: 113963,
+          username: 'Астахов Афанасий',
+          first_name: 'Афанасий',
+          last_name: 'Астахов',
           data_reg: '6 мая',
           ratio: 1,
           achievements: [
