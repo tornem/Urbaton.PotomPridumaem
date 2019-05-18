@@ -35,7 +35,7 @@
       <div class="section-screen">
         <h2 class="heading">О проекте</h2>
 
-        <v-timeline>
+        <v-timeline :dense="isMobile">
           <v-timeline-item
             color="#6B54E7"
             fill-dot
@@ -65,7 +65,7 @@
             color="#FFF246"
             fill-dot
             light
-            style="margin: -100px 0 0;"
+            class="about-block"
           >
             <v-card class="elevation-2">
               <v-card-title class="headline">Решение - Геймификация!</v-card-title>
@@ -85,7 +85,7 @@
             color="#6B54E7"
             fill-dot
             light
-            style="margin: -100px 0 0;"
+            class="about-block"
           >
             <v-card class="elevation-2">
               <v-card-title class="headline">Сильные стороны</v-card-title>
@@ -127,6 +127,26 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isMobile: false,
+    };
+  },
+  beforeMount() {
+    window.addEventListener('resize', () => {
+      this.isMobile = window.matchMedia('(max-width: 768px)').matches;
+    }, false);
+  },
+  beforeDestroy() {
+    window.addEventListener('resize', () => {
+      this.isMobile = window.matchMedia('(max-width: 768px)').matches;
+    }, false);
+  },
+};
+</script>
 
 <style lang="scss" scoped>
   $primary-color: #6B54E7;
@@ -174,6 +194,17 @@
       line-height: 3;
       margin: 0;
     }
+
+
+    @media screen and (max-width: 768px) {
+      height: 70vh;
+
+      p {
+        margin: 20px 0;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    }
   }
 
   .about-screen {
@@ -199,15 +230,31 @@
     }
   }
 
+  .about-block {
+    margin: -100px 0 0;
+
+    @media screen and (max-width: 768px) {
+      margin: 0;
+    }
+  }
+
   .heading {
     margin: 10px 0 30px;
     font-size: 52px;
     line-height: 1.5;
     font-weight: bold;
+
+    @media screen and (max-width: 768px) {
+      font-size: 32px;
+    }
   }
 
   .headline {
     font-weight: bold;
+
+    @media screen and (max-width: 768px) {
+      font-size: 18px !important;
+    }
   }
 
   .about-text {
@@ -246,6 +293,16 @@
       right: 0;
       width: 155px;
       transform: scale(-1, 1);
+    }
+
+    @media screen and (max-width: 768px) {
+      top: 40%;
+      width: 80px;
+      height: 193px;
+
+      &.right {
+        width: 80px;
+      }
     }
   }
 </style>
