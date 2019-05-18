@@ -63,12 +63,6 @@ export default {
       isOpenMenu: false,
     };
   },
-  watch: {
-    '$route' (to) {
-      // необходимо для перезагрузки
-      this.$router.push(to.path);
-    }
-  },
   computed: {
     isHomePage() {
       return this.$route.path === '/';
