@@ -1,11 +1,11 @@
 <template>
   <v-container class="user">
-    <div v-if="selectedUser === 0">
+    <div v-if="selectedUser.length === 0">
       Пользователь не найден
     </div>
     <v-layout
       v-else
-      row
+      class="user-layout"
     >
       <v-flex class="info">
         <v-layout column align-start pa-4>
@@ -199,10 +199,25 @@ export default {
 <style lang="scss" scoped>
   .user {
     max-width: 1200px;
+
+    @media (max-width: 1400px) {
+      max-width: 900px;
+    }
+    @media (max-width: 1070px) {
+      max-width: 800px;
+    }
+  }
+  .user-layout {
+    @media (max-width: 970px) {
+      flex-direction: column;
+    }
   }
   .info,
   .achievement {
     width: 50%;
+    @media (max-width: 970px) {
+      width: 100%;
+    }
   }
   .achievement {
     max-height: 500px;
