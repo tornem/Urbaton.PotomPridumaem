@@ -363,17 +363,27 @@ export default {
       transform: scale(-1, 1);
     }
 
-    @media screen and (max-width: 990px) {
+    @media screen and (max-width: 1024px) {
       top: 65%;
     }
 
-    @media screen and (max-width: 768px) {
-      top: 50%;
+    @media screen and (max-width: 990px) {
+      top: 65%;
       width: 80px;
       height: 193px;
 
       &.right {
         width: 80px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      top: 50%;
+      width: 65px;
+      height: 193px;
+
+      &.right {
+        width: 65px;
       }
     }
   }
