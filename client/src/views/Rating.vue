@@ -167,7 +167,7 @@ export default {
 .filter-input {
   width: 100%;
   max-width: 1024px;
-  margin: auto;
+  margin: auto!important;
 }
 
 .heading {

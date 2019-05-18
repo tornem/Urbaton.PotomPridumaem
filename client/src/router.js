@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import Rating from './views/Rating.vue';
+import User from './views/User.vue';
+import Achievement from './views/Achievement.vue';
 
 Vue.use(Router);
 
@@ -24,7 +27,8 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Rating.vue'),
+      // component: () => import(/* webpackChunkName: "about" */ './views/Rating.vue'),
+      component: Rating,
     },
     {
       path: '/user/:id',
@@ -32,7 +36,8 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/User.vue'),
+      // component: () => import(/* webpackChunkName: "about" */ './views/User.vue'),
+      component: User,
     },
     {
       path: '/achievement',
@@ -40,7 +45,8 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Achievement.vue'),
+      // component: () => import(/* webpackChunkName: "about" */ './views/Achievement.vue'),
+      component: Achievement,
     },
   ],
 });
