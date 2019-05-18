@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -13,11 +14,14 @@ public class Achievement {
     @Setter
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @ManyToOne
-    private User user;
+    @Setter
+    @Getter
+    @ManyToMany(cascade=CascadeType.MERGE)
+    @JoinColumn(name = "achievements")
+    private List<User> users;
 
     @Setter
     @Getter

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import javax.transaction.Transactional;
 import java.util.UUID;
 
-@Transactional
+//@Transactional
 public interface AchievementRepository extends JpaRepository<Achievement, Long> {
 
 }

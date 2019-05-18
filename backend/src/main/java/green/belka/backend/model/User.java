@@ -14,12 +14,13 @@ public class User {
     @Setter
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Setter
     @Getter
-    @OneToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade={CascadeType.MERGE})
+    @JoinColumn(name = "users")
     private List<Achievement> achievements;
 
     @Setter
@@ -30,5 +31,15 @@ public class User {
     @Setter
     private String nickname;
 
+    @Getter
+    @Setter
+    private String first_name;
 
+    @Getter
+    @Setter
+    private String last_name;
+
+    @Getter
+    @Setter
+    private Long cost;
 }

@@ -37,8 +37,14 @@ public class MainServiceImpl implements MainService {
     @Override
     public ResponseData<Long> addAchievement(Achievement achievement, Long userId) {
         User user = userRepository.findById(userId).get();
+
+        if(achievement.getId() != null) {
+            achievement = achievementRepository.findById(achievement.getId()).get();
+        }
+//        userRepository.deleteById(user.getId());
         user.getAchievements().add(achievement);
         user = userRepository.save(user);
+
         achievement = user.getAchievements().get(user.getAchievements().size()-1);
         return new ResponseData<>(achievement.getId(), ResultCode.OK);
     }
