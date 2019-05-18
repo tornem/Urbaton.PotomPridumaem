@@ -133,6 +133,10 @@ export default {
     margin:  auto;
     fill: $primary-color;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 65px 30px 0;
+  }
 }
 
 .filter-input {

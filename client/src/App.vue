@@ -10,14 +10,33 @@
           </router-link>
         </div>
         <div class="nav-wrap">
-          <div class="menu">
-            Меню
-          </div>
-          <div class="nav">
-            <router-link to="/">О проекте</router-link>
-            <router-link to="/achievement">Ачивки</router-link>
-            <router-link to="/rating">Рейтинг</router-link>
-          </div>
+          <v-menu>
+            <template #activator="{ on: menu }">
+              <v-tooltip bottom>
+                <template #activator="{ on: tooltip }">
+                  <v-btn
+                    color="#FFF246"
+                    append
+                    v-on="{ ...tooltip, ...menu }"
+                  >
+                    <v-icon color="#6B54E7">menu</v-icon>
+                  </v-btn>
+                </template>
+                <span>Im A ToolTip</span>
+              </v-tooltip>
+            </template>
+            <v-list>
+              <v-list-tile>
+                <router-link to="/">О проекте</router-link>
+              </v-list-tile>
+              <v-list-tile>
+                <router-link to="/achievement">Ачивки</router-link>
+              </v-list-tile>
+              <v-list-tile>
+                <router-link to="/rating">Рейтинг</router-link>
+              </v-list-tile>
+            </v-list>
+          </v-menu>
         </div>
       </header>
       <router-view/>
@@ -39,11 +58,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isOpenMenu: false,
+    };
+  },
   computed: {
     isHomePage() {
       return this.$route.path === '/';
     },
-  },
+  }
 };
 </script>
 
@@ -82,10 +106,30 @@ html, body {
   justify-content: space-between;
   align-items: center;
   margin: auto;
+  background: #6b54e7;
+
+  &.fixed {
+    background: transparent;
+  }
+
+  @media screen and (max-width: 768px) {
+    .logo {
+      margin: 0 20px;
+    }
+
+    .nav-wrap {
+      padding: 10px 30px;
+    }
+
+    .nav {
+      top: 55px;
+    }
+  }
 
   .logo {
-    width: 200px;
-    padding: 30px;
+    width: 179px;
+    padding: 10px;
+    margin: 10px 20px;
 
     &.hidden {
       visibility: hidden;
@@ -100,45 +144,24 @@ html, body {
 
 .nav-wrap {
   position: relative;
-  padding: 30px;
+  padding: 10px 30px;
   text-align: right;
 
-  &:hover .nav {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
+  .v-list__tile {
+    padding: 0;
   }
 
-  .menu {
-    display: inline-block;
-    padding: 10px;
-    border-radius: 3px;
-    color: $txt-color;
-    background-color: $yellow-color;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
-  }
-
-  .nav {
-    position: absolute;
-    top: 80px;
-    right: 30px;
-    width: 150px;
-    padding: 5px 0;
-    text-align: center;
-    opacity: 0;
-    background: white;
-    border-radius: 3px;
-    transform: translateY(10px);
-    visibility: hidden;
-    transition: transform 0.3s;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+  .v-btn {
+    padding: 0 10px;
   }
 
   a {
     display: block;
+    width: 100%;
+    padding: 10px 15px;
     font-weight: bold;
     color: $txt-color;
-    padding: 10px 15px;
+    text-align: center;
     text-decoration: none;
 
     &:hover {
@@ -204,6 +227,11 @@ html, body {
     width: 20px;
     height: 20px;
     margin: 0 4px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 10px 20px;
+    font-size: 11px;
   }
 }
 </style>

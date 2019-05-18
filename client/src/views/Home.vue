@@ -136,6 +136,8 @@ export default {
     };
   },
   beforeMount() {
+    this.isMobile = window.matchMedia('(max-width: 768px)').matches;
+
     window.addEventListener('resize', () => {
       this.isMobile = window.matchMedia('(max-width: 768px)').matches;
     }, false);
@@ -299,8 +301,12 @@ export default {
       transform: scale(-1, 1);
     }
 
+    @media screen and (max-width: 990px) {
+      top: 65%;
+    }
+
     @media screen and (max-width: 768px) {
-      top: 40%;
+      top: 50%;
       width: 80px;
       height: 193px;
 

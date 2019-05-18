@@ -3,7 +3,7 @@
     <div class="filter-wrap">
       <v-text-field
         class="filter-input"
-        label="Введите название компании или ачивки"
+        label="Введите автора или название ачивки"
         v-model="searchQuery"
         solo
       />
@@ -12,9 +12,7 @@
       </svg>
     </div>
     <v-container>
-      <v-expansion-panel
-        expand
-      >
+      <v-expansion-panel expand>
         <v-expansion-panel-content
           v-for="(author, authorIndex) in filteredAuthors"
           :key="author.id"
@@ -31,7 +29,7 @@
           </template>
           <v-card>
             <v-card-text class="grey lighten-4">
-              <v-list two-line subheader>
+              <v-list three-line subheader>
                 <v-list-tile
                   v-for="(achievement, achievementIndex) in author.achievements"
                   :key="achievement.id"
@@ -43,7 +41,7 @@
 
                   <v-list-tile-content>
                     <v-list-tile-title>{{ achievement.name }}</v-list-tile-title>
-                    <v-list-tile-sub-title>{{ achievement.date }}</v-list-tile-sub-title>
+                    <v-list-tile-sub-title>{{ achievement.description }}</v-list-tile-sub-title>
                   </v-list-tile-content>
 
                   <div
@@ -351,6 +349,10 @@ export default {
       bottom: -100px;
       margin:  auto;
       fill: $primary-color;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 65px 30px 0;
     }
   }
 
