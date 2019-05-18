@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header class="header">
+    <header v-if="false" class="header">
       <div class="nav-wrap">
         <div class="menu">
           Меню
