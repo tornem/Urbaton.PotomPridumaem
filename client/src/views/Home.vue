@@ -93,10 +93,67 @@
         <h2 class="heading">Как это работает</h2>
 
         <div class="description">
-          <img
-            src="https://cs8.pikabu.ru/post_img/big/2016/12/12/8/1481546085176190884.png"
-            alt="вжух!"
+          <figure class="img">
+            <img
+              src="https://cs8.pikabu.ru/post_img/big/2016/12/12/8/1481546085176190884.png"
+              alt="вжух!"
+            >
+          </figure>
+          <v-tabs
+            mobile-break-point="990"
+            dark
+            hide-slider
+            color="#6B54E7"
+            class="tabs"
           >
+            <v-tab ripple>
+              Для пользователей
+            </v-tab>
+            <v-tab ripple>
+              Для партнёров
+            </v-tab>
+            <v-tab-item>
+              <v-card flat>
+                <v-card-text>
+                  <p>
+                    Например, Вы решили принять участие в акции по озеленению города.
+                    Вы регистрируетесь в нашем телеграм боте <a href="">(ссылка? achiever_bot)</a>.
+                    Выбираете мероприятие по озеленению, находите в списке доступных ачивоек ту, которая
+                    Вам понравилась и начинаете её выполнение.
+                  </p>
+                  <p>
+                    Выполнили ачивку? - отправляете боту подтверждение её выполнения в соответствии с
+                    требованиями в описании ачивки. После того, как представитель компании-партнёра,
+                    ответственного за проведение акции, подтвердит выполнение ачивки вы получаете
+                    баллы и наслаждаетесь своим положением в рейтинге.
+                  </p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item>
+              <v-card>
+                <v-card-text>
+                  <p>
+                    Для начала вы запускаете бота и регистрируетесь как обычный пользователь.
+                    Затем пишете нам на почту <a href="mailto:test@example.com">test@example.com</a>,
+                    рассказываете о своей компании и её мероприятиях,
+                    которые вы планируете геймифицировать. Указываете <i>telegram username</i> человека,
+                    который будет выступать админом от вашей организации: публиковать ачивки,
+                    подтверждать их выполнение участниками акции.
+                  </p>
+                  <p>
+                    Мы добавляем вашу организацию и отписываемся вам.
+                  </p>
+                  <p>
+                    После этого вы можете создавать свои ачивки для участников. Ура!
+                    Когда участники выполнят ваши ачивки - вам придут результаты для подтверждения:
+                    вы сможете принять или отклонить выполнения ачивок в соответствии с правилами их получения.
+                    После подтверждения участникам будут начислены баллы за выполнение.
+                  </p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+          </v-tabs>
         </div>
       </div>
     </section>
@@ -248,16 +305,46 @@ export default {
   }
 
   .work-screen {
-    padding: 150px 0 50px;
+    padding: 85px 0 50px;
     background-color: $primary-color;
     color: $white-color;
 
     .description {
-      max-width: 590px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      a {
+        color: $primary-color;
+
+        &:hover {
+          color: #a293f5;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .img {
+      margin-top: 30px;
+      max-width: 400px;
 
       img {
-        width: 100%;
+        max-width: 100%;
       }
+    }
+
+    .tabs {
+      max-width: 590px;
+      width: 100%;
     }
   }
 
@@ -276,17 +363,27 @@ export default {
       transform: scale(-1, 1);
     }
 
-    @media screen and (max-width: 990px) {
+    @media screen and (max-width: 1024px) {
       top: 65%;
     }
 
-    @media screen and (max-width: 768px) {
-      top: 50%;
+    @media screen and (max-width: 990px) {
+      top: 65%;
       width: 80px;
       height: 193px;
 
       &.right {
         width: 80px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      top: 50%;
+      width: 65px;
+      height: 193px;
+
+      &.right {
+        width: 65px;
       }
     }
   }
