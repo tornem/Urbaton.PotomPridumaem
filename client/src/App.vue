@@ -152,6 +152,7 @@ html, body {
   }
 
   .v-btn {
+    min-width: auto;
     padding: 0 10px;
   }
 
