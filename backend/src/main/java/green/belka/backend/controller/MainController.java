@@ -24,7 +24,7 @@ public class MainController {
             value = {"/achievement/{id}"},
             method = {RequestMethod.GET}
     )
-    public ResponseData<Achievement> getAchievement(@PathVariable("id") UUID id){
+    public ResponseData<Achievement> getAchievement(@PathVariable("id") Long id){
         return mainService.getAchievement(id);
     }
 
@@ -40,7 +40,7 @@ public class MainController {
             value = {"/achievement/"},
             method = {RequestMethod.POST}
     )
-    public ResponseData<UUID> addAchievement(@RequestBody Achievement achievement){
+    public ResponseData<Long> addAchievement(@RequestBody Achievement achievement){
         return mainService.addAchievement(achievement);
     }
 

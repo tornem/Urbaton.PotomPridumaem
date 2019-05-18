@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -23,7 +22,7 @@ public class MainServiceImpl implements MainService {
     UserRepository userRepository;
 
     @Override
-    public ResponseData<Achievement> getAchievement(UUID id) {
+    public ResponseData<Achievement> getAchievement(Long id) {
         Achievement achievement = achievementRepository.findById(id).get();
         return new ResponseData<>(achievement, ResultCode.OK);
     }
@@ -35,19 +34,19 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public ResponseData<UUID> addAchievement(Achievement achievement) {
-        UUID id = achievementRepository.save(achievement).getId();
+    public ResponseData<Long> addAchievement(Achievement achievement) {
+        Long id = achievementRepository.save(achievement).getId();
         return new ResponseData<>(id, ResultCode.OK);
     }
 
     @Override
-    public ResponseData<UUID> updateAchievement(Achievement achievement) {
-        UUID id = achievementRepository.save(achievement).getId();
+    public ResponseData<Long> updateAchievement(Achievement achievement) {
+        Long id = achievementRepository.save(achievement).getId();
         return new ResponseData<>(id, ResultCode.OK);
     }
 
     @Override
-    public ResponseData<UUID> deleteAchievement(UUID id) {
+    public ResponseData<Long> deleteAchievement(Long id) {
         achievementRepository.deleteById(id);
         return new ResponseData<>(id, ResultCode.OK);
     }

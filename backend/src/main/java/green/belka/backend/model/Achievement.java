@@ -4,30 +4,32 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.UUID;
 
-@Setter
-@Getter
+
 @Entity
 @Table(name = "achievements")
 public class Achievement {
 
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
-    private String name;
+    @ManyToOne
+    private User user;
 
-    private String description;
+}
+//	@OneToOne(optional = false, mappedBy="id")
+//    private User author;
 
-    private Long cost;
-
-	@OneToOne(optional = false, mappedBy="id")
-    private User author;
-
+    /*
+    @Setter
+    @Getter
     private Long limit;
 
+    @Setter
+    @Getter
     private LocalDate createDate;
 
     @PreUpdate
@@ -35,5 +37,7 @@ public class Achievement {
         createDate = LocalDate.now();
     }
 
+    @Setter
+    @Getter
     private LocalDate finishDate;
-}
+    */
