@@ -3,7 +3,7 @@
     <div class="filter-wrap">
       <v-text-field
         class="filter-input"
-        label="Введите название ачивки"
+        label="Введите логин пользователя"
         v-model="searchQuery"
         solo
       />
