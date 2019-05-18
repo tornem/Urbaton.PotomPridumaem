@@ -12,6 +12,7 @@
       </svg>
     </div>
     <v-container>
+      <h2 class="heading">Список авторов</h2>
       <v-expansion-panel expand>
         <v-expansion-panel-content
           v-for="(author, authorIndex) in filteredAuthors"
@@ -392,5 +393,12 @@ export default {
   .achievement-cost {
     display: flex;
     align-items: center;
+  }
+  .heading {
+    margin: 0 0 30px;
+    font-size: 32px;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: left;
   }
 </style>
