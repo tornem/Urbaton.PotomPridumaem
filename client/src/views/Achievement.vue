@@ -13,12 +13,11 @@
     </div>
     <v-container>
       <v-expansion-panel
-        v-model="panel"
         expand
       >
         <v-expansion-panel-content
-          v-for="(item, i) in 5"
-          :key="i"
+          v-for="(author, authorIndex) in filteredAuthors"
+          :key="author.id"
         >
           <template v-slot:header>
             <v-avatar
@@ -26,56 +25,45 @@
               color="grey lighten-4"
               class="company-avatar"
             >
-              <img :src="`https://picsum.photos/500/300?image=${i * 18 + 10}`" alt="avatar">
+              <img :src="`https://picsum.photos/500/300?image=${authorIndex * 18 + 10}`" alt="avatar">
             </v-avatar>
-            <div>Item</div>
+            <div>{{author.author_name}}</div>
           </template>
           <v-card>
-            <v-card-text class="grey lighten-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat.
+            <v-card-text class="grey lighten-4">
+              <v-list two-line subheader>
+                <v-list-tile
+                  v-for="(achievement, achievementIndex) in author.achievements"
+                  :key="achievement.id"
+                  avatar
+                >
+                  <v-list-tile-avatar>
+                    <img :src="`https://picsum.photos/500/300?image=${achievementIndex * 5 + 10}`">
+                  </v-list-tile-avatar>
+
+                  <v-list-tile-content>
+                    <v-list-tile-title>{{ achievement.name }}</v-list-tile-title>
+                    <v-list-tile-sub-title>{{ achievement.date }}</v-list-tile-sub-title>
+                  </v-list-tile-content>
+
+                  <div
+                    class="achievement-cost"
+                  >
+                    <div class="ml-2 grey--text text--darken-2">
+                      <span>{{achievement.cost}}</span>
+                    </div>
+                    <v-icon
+                      color="yellow darken-2"
+                    >
+                      star
+                    </v-icon>
+                  </div>
+                </v-list-tile>
+              </v-list>
             </v-card-text>
           </v-card>
         </v-expansion-panel-content>
       </v-expansion-panel>
-      <v-layout
-        row
-        wrap
-        justify-flex-start
-        class="container"
-      >
-        <v-flex
-          v-for="(item, i) in filteredAchievements"
-          :key="item.id"
-          class="item"
-          xs6
-        >
-          <v-card>
-            <!--<v-img-->
-            <!--:src="item.icon"-->
-            <!--class="img"-->
-            <!--aspect-ratio="2.75"-->
-            <!--&gt;</v-img>-->
-            <v-img
-              :src="`https://picsum.photos/500/300?image=${i * 11 + 10}`"
-              class="img"
-              aspect-ratio="2.75"
-            />
-
-            <v-card-title class="title">
-              <h4 class="headline mb-0">{{item.name}}</h4>
-              <div>Стоимость ачивки - {{ item.cost }} </div>
-              <div>Автор - {{ item.author }} </div>
-            </v-card-title>
-
-            <v-card-text class="description">
-              {{item.description}}
-            </v-card-text>
-          </v-card>
-        </v-flex>
-    </v-layout>
     </v-container>
   </div>
 </template>
@@ -86,84 +74,254 @@ export default {
   data() {
     return {
       searchQuery: '',
-      achievements: [
+      authors: [
         {
-          id: 111,
-          name: 'первая ачивка',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
-          cost: 58,
-          author: 'OOO prot',
-          icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-          creation_date: '16 мая',
-          show: false,
+          author_name: 'Первый автор ачивок',
+          achievements: [
+            {
+              id: 10,
+              name: 'первая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: '16 мая',
+            },
+            {
+              id: 20,
+              name: 'вторая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 15,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 30,
+              name: 'Третья ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 40,
+              name: 'четвертая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: '16 мая',
+            },
+            {
+              id: 50,
+              name: 'пятая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 15,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 60,
+              name: 'шестая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+          ],
         },
         {
-          id: 222,
-          name: 'вторая ачивка',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
-          cost: 15,
-          author: 'OOO prot1',
-          icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-          creation_date: 'string(unix timestamp)',
-          show: false,
+          author_name: 'Второй автор ачивок',
+          achievements: [
+            {
+              id: 11,
+              name: 'седьмая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: '16 мая',
+            },
+            {
+              id: 21,
+              name: 'восьмая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 15,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 31,
+              name: 'девятая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 41,
+              name: 'десятая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: '16 мая',
+            },
+            {
+              id: 51,
+              name: 'одинадцатая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 15,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 61,
+              name: '12 ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+          ],
         },
         {
-          id: 333,
-          name: 'Третья ачивка',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
-          cost: 58,
-          author: 'OOO prot2',
-          icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-          creation_date: 'string(unix timestamp)',
-          show: false,
+          author_name: 'Третий автор ачивок',
+          achievements: [
+            {
+              id: 1111,
+              name: '13 ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: '16 мая',
+            },
+            {
+              id: 2222,
+              name: 'вторая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 15,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 3333,
+              name: 'Третья ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 4444,
+              name: '4 ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: '16 мая',
+            },
+            {
+              id: 5555,
+              name: '5 ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 15,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 6666,
+              name: 'шестая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+          ],
         },
         {
-          id: 444,
-          name: '4 ачивка',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
-          cost: 58,
-          author: 'OOO prot',
-          icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-          creation_date: '16 мая',
-          show: false,
-        },
-        {
-          id: 555,
-          name: '5 ачивка',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
-          cost: 15,
-          author: 'OOO prot1',
-          icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-          creation_date: 'string(unix timestamp)',
-          show: false,
-        },
-        {
-          id: 666,
-          name: 'шестая ачивка',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
-          cost: 58,
-          author: 'OOO prot2',
-          icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-          creation_date: 'string(unix timestamp)',
-          show: false,
+          author_name: 'Четвертый автор ачивок',
+          achievements: [
+            {
+              id: 111,
+              name: 'первая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: '16 мая',
+            },
+            {
+              id: 222,
+              name: 'вторая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 15,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 333,
+              name: 'Третья ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 444,
+              name: '4 ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: '16 мая',
+            },
+            {
+              id: 555,
+              name: '5 ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 15,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+            {
+              id: 666,
+              name: 'шестая ачивка',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
+              cost: 58,
+              icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+              creation_date: 'string(unix timestamp)',
+            },
+          ],
         },
       ],
     };
   },
   computed: {
-    filteredAchievements() {
-      let { achievements, searchQuery } = this;
+    filteredAuthors() {
+      let { authors, searchQuery } = this;
       searchQuery = searchQuery.toLowerCase();
 
       if (searchQuery) {
-        achievements = achievements
-          .filter(item => item.name.toLowerCase().indexOf(searchQuery) > -1
-            || item.author.toLowerCase().indexOf(searchQuery) > -1);
+        authors = authors
+          .filter((author) => {
+            const authorValue = author.author_name.toLowerCase().indexOf(searchQuery) > -1;
+            const achievementValue = this.filteredAchievements(author.achievements);
+
+            return authorValue || achievementValue;
+          });
       }
 
-      return achievements;
+      return authors;
     },
   },
+  methods: {
+    filteredAchievements(achievements) {
+      let { searchQuery } = this;
+      let filteredAchievements = achievements;
+      searchQuery = searchQuery.toLowerCase();
+
+      if (searchQuery) {
+        filteredAchievements = filteredAchievements
+          .filter(item => item.name.toLowerCase().indexOf(searchQuery) > -1);
+      }
+
+      return filteredAchievements.length !== 0;
+    },
+  }
 };
 </script>
 
@@ -228,5 +386,9 @@ export default {
 
   .description {
     text-align: justify;
+  }
+  .achievement-cost {
+    display: flex;
+    align-items: center;
   }
 </style>
