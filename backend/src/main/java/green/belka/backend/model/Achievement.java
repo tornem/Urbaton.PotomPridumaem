@@ -5,37 +5,29 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
-@Table(name = "achievement")
+@Table(name = "achievements")
 public class Achievement {
 
-    @Setter
-    @Getter
-
     @Id
-    @Column(name = "achivement_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToOne(optional=false, mappedBy="achivement")
-    private Long achivementId;
+    private UUID id;
 
-    @Column(name = "name")
-	private String name;
+    private String name;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "value")
-    private Long value;
+    private Long cost;
 
-	@Column(name = "author_id")
-    @OneToOne(optional = false, mappedBy="id")
+	@OneToOne(optional = false, mappedBy="id")
     private User author;
 
-    @Column(name = "limit")
     private Long limit;
 
-    @Column(name = "create_date")
     private LocalDate createDate;
 
     @PreUpdate
@@ -43,10 +35,5 @@ public class Achievement {
         createDate = LocalDate.now();
     }
 
-    @Column(name = "finish_date")
     private LocalDate finishDate;
-//    @PreUpdate
-//    protected void onUpdate() {
-//        finishDate = new LocalDate();
-//    }
 }

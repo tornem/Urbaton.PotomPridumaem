@@ -3,6 +3,7 @@ package green.belka.backend.controller;
 import green.belka.backend.MainService;
 import green.belka.backend.model.Achievement;
 import green.belka.backend.model.Achievement;
+import green.belka.backend.model.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import java.util.UUID;
 
 @Service
 public class MainController {
+
     @Autowired
     MainService mainService;
 
@@ -22,8 +24,7 @@ public class MainController {
             value = {"/achievement/{id}"},
             method = {RequestMethod.GET}
     )
-    public Achievement getAchievement(@PathVariable("id") UUID id){
-
+    public ResponseData<Achievement> getAchievement(@PathVariable("id") UUID id){
         return mainService.getAchievement(id);
     }
 
@@ -31,8 +32,7 @@ public class MainController {
             value = {"/achievement/"},
             method = {RequestMethod.GET}
     )
-    public List<Achievement> getAchievements(){
-
+    public ResponseData<List<Achievement>> getAchievements(){
         return mainService.getAchievements();
     }
 
@@ -40,19 +40,9 @@ public class MainController {
             value = {"/achievement/"},
             method = {RequestMethod.POST}
     )
-    public Achievement addAchievement(@RequestBody Achievement achievement){
-
+    public ResponseData<UUID> addAchievement(@RequestBody Achievement achievement){
         return mainService.addAchievement(achievement);
     }
-
-//    @RequestMapping(
-//            value = {"/achievement/{id}"},
-//            method = {RequestMethod.POST}
-//    )
-//    public void updateAchievement(@PathVariable("id") UUID id, @RequestBody Achievement achievement){
-//
-//        return mainService.updateAchievement(achievement);
-//    }
 
 
 }

@@ -19,13 +19,13 @@ public interface MainService {
 
     ResponseData<UUID> deleteAchievement(UUID id);
 
-    ResponseData<User> getUser(UUID id);
+    ResponseData<User> getUser(Long id);
 
     ResponseData<List<User>> getUsers();
 
-    ResponseData<UUID> addUser(User user);
+    ResponseData<Long> addUser(User user);
 
-    ResponseData<UUID> updateUser(User user);
+    ResponseData<Long> updateUser(User user);
 
-    ResponseData<UUID> deleteUser(UUID id);
+    ResponseData<Long> deleteUser(Long id);
 }

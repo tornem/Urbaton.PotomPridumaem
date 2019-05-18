@@ -16,8 +16,6 @@ import java.util.UUID;
 @Service
 public class MainServiceImpl implements MainService {
 
-
-
     @Autowired
     AchievementRepository achievementRepository;
 
@@ -25,60 +23,63 @@ public class MainServiceImpl implements MainService {
     UserRepository userRepository;
 
     @Override
-    public Achievement getAchievement(UUID id) {
-        return null;
+    public ResponseData<Achievement> getAchievement(UUID id) {
+        Achievement achievement = achievementRepository.findById(id).get();
+        return new ResponseData<>(achievement, ResultCode.OK);
     }
 
     @Override
-    public List<Achievement> getAchievements() {
-        return null;
+    public ResponseData<List<Achievement>> getAchievements() {
+        List<Achievement> achievements = achievementRepository.findAll();
+        return new ResponseData<>(achievements, ResultCode.OK);
     }
 
     @Override
-    public Achievement addAchievement(Achievement achievement) {
-        return null;
+    public ResponseData<UUID> addAchievement(Achievement achievement) {
+        UUID id = achievementRepository.save(achievement).getId();
+        return new ResponseData<>(id, ResultCode.OK);
     }
 
     @Override
-    public void updateAchievement(Achievement achievement) {
-
+    public ResponseData<UUID> updateAchievement(Achievement achievement) {
+        UUID id = achievementRepository.save(achievement).getId();
+        return new ResponseData<>(id, ResultCode.OK);
     }
 
     @Override
-    public void deleteAchievement(UUID id) {
-
+    public ResponseData<UUID> deleteAchievement(UUID id) {
+        achievementRepository.deleteById(id);
+        return new ResponseData<>(id, ResultCode.OK);
     }
 
     @Override
-    public User getUser(UUID id) {
-        return null;
+    public ResponseData<User> getUser(Long id) {
+        User user = userRepository.findById(id).get();
+        return new ResponseData<>(user, ResultCode.OK);
     }
 
     @Override
-    public List<User> getUsers() {
+    public ResponseData<List<User>> getUsers() {
         List<User> users = userRepository.findAll();
-        return new ResponseData<>()
+        return new ResponseData<>(users, ResultCode.OK);
     }
 
     @Override
-    public ResponseData<UUID> addUser(User user) {
-        User result =     userRepository.save(user);
-        return ResponseData<>(result.getId(), ResultCode.OK);
+    public ResponseData<Long> addUser(User user) {
+        Long id = userRepository.save(user).getId();
+        return new ResponseData<Long>(id, ResultCode.OK);
     }
 
     @Override
-    public void updateUser(User user) {
-
+    public ResponseData<Long> updateUser(User user) {
+        Long id = userRepository.save(user).getId();
+        return new ResponseData<Long>(id, ResultCode.OK);
     }
 
     @Override
-    public void deleteUser(UUID id) {
-
+    public ResponseData<Long> deleteUser(Long id) {
+        userRepository.deleteById(id);
+        return new ResponseData<Long>(id, ResultCode.OK);
     }
 
-//    private void validateExists(UUID id)  {
-//        if (!UserRepository.existsById(id)) {
-//            throw new Exception("Customer with id " + id + " doesn't exist");
-//        }
-//    }
 }
