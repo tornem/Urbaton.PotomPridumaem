@@ -106,10 +106,10 @@
             color="#6B54E7"
             class="tabs"
           >
-            <v-tab ripple>
+            <v-tab ripple class="tabs-item">
               Для пользователей
             </v-tab>
-            <v-tab ripple>
+            <v-tab ripple class="tabs-item">
               Для партнёров
             </v-tab>
             <v-tab-item>
@@ -386,5 +386,8 @@ export default {
         width: 65px;
       }
     }
+  }
+  .tabs-item {
+    cursor: pointer;
   }
 </style>
