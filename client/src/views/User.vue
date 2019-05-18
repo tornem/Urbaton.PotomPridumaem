@@ -4,9 +4,9 @@
       v-if="selectedUser.length === 0"
       class="error-block"
     >
-      Пользователь не найден
+      <span>Пользователь не найден</span>
 
-      <span>:(</span>
+      <span class="error-smile">:(</span>
     </div>
     <v-layout
       v-else
@@ -219,11 +219,23 @@ $white-color: #FFFFFF;
   background-color: $primary-color;
   border-radius: 24% 76% 56% 44% / 37% 59% 41% 63%;
 
-  span {
-    transform: translate3d(55px, -5px, 0);
-    font-size: 78px;
-    font-weight: bold;
-    color: $yellow-color
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  @media (max-width: 500px) {
+    font-size: 18px;
+  }
+}
+
+.error-smile {
+  transform: translate3d(55px, -5px, 0);
+  font-size: 78px;
+  font-weight: bold;
+  color: $yellow-color;
+
+  @media (max-width: 500px) {
+    font-size: 54px;
   }
 }
 
