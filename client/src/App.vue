@@ -235,4 +235,20 @@ html, body {
     font-size: 11px;
   }
 }
+
+.home-page {
+  .v-tabs__item {
+    border-radius: 3px;
+    /*margin-bottom: 20px;*/
+  }
+
+  .v-tabs__item--active {
+    background-color: $yellow-color;
+    color: $txt-color;
+  }
+
+  .v-window {
+    margin-top: 20px;
+  }
+}
 </style>
