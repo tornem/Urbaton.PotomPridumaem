@@ -14,12 +14,28 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/rating',
+      name: 'rating',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      component: () => import(/* webpackChunkName: "about" */ './views/Rating.vue'),
+    },
+    {
+      path: '/users',
+      name: 'users',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/Users.vue'),
+    },
+    {
+      path: '/achievement',
+      name: 'achievement',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/Achievement.vue'),
     },
   ],
 });
