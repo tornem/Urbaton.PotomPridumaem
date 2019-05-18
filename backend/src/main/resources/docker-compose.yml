@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+  achievement-db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: achievements
+    ports:
+      - 1234:5432
