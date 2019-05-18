@@ -1,4 +1,9 @@
-package entity;
+package green.belka.backend.model;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user_informations")
@@ -9,7 +14,7 @@ public class UserInformations {
 
     @Id
     @Column(name = "user_id")
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @OneToOne(optional=false, cascade=CascadeType.ALL)
     @JoinColumn(name="userId")
     private Long userId;

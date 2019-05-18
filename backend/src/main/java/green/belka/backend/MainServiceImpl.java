@@ -2,8 +2,11 @@ package green.belka.backend;
 
 
 import green.belka.backend.model.Achievement;
+import green.belka.backend.model.ResponseData;
+import green.belka.backend.model.ResultCode;
 import green.belka.backend.model.User;
 import green.belka.backend.repository.AchievementRepository;
+import green.belka.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,9 @@ public class MainServiceImpl implements MainService {
 
     @Autowired
     AchievementRepository achievementRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public Achievement getAchievement(UUID id) {
@@ -50,12 +56,14 @@ public class MainServiceImpl implements MainService {
 
     @Override
     public List<User> getUsers() {
-        return null;
+        List<User> users = userRepository.findAll();
+        return new ResponseData<>()
     }
 
     @Override
-    public User addUser(User user) {
-        return null;
+    public ResponseData<UUID> addUser(User user) {
+        User result =     userRepository.save(user);
+        return ResponseData<>(result.getId(), ResultCode.OK);
     }
 
     @Override

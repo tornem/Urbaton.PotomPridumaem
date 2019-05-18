@@ -2,29 +2,30 @@ package green.belka.backend;
 
 
 import green.belka.backend.model.Achievement;
+import green.belka.backend.model.ResponseData;
 import green.belka.backend.model.User;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface MainService {
-    Achievement getAchievement(UUID id);
+    ResponseData<Achievement> getAchievement(UUID id);
 
-    List<Achievement> getAchievements();
+    ResponseData<List<Achievement>> getAchievements();
 
-    Achievement addAchievement(Achievement achievement);
+    ResponseData<UUID> addAchievement(Achievement achievement);
 
-    void updateAchievement(Achievement achievement);
+    ResponseData<UUID> updateAchievement(Achievement achievement);
 
-    void deleteAchievement(UUID id);
+    ResponseData<UUID> deleteAchievement(UUID id);
 
-    User getUser(UUID id);
+    ResponseData<User> getUser(UUID id);
 
-    List<User> getUsers();
+    ResponseData<List<User>> getUsers();
 
-    User addUser(User user);
+    ResponseData<UUID> addUser(User user);
 
-    void updateUser(User user);
+    ResponseData<UUID> updateUser(User user);
 
-    void deleteUser(UUID id);
+    ResponseData<UUID> deleteUser(UUID id);
 }

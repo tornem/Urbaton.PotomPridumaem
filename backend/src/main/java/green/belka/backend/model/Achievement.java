@@ -1,23 +1,29 @@
-package entity;
+package green.belka.backend.model;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "achivement")
-public class UserInformations {
+@Table(name = "achievement")
+public class Achievement {
 
     @Setter
     @Getter
 
     @Id
     @Column(name = "achivement_id")
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @OneToOne(optional=false, mappedBy="achivement")
     private Long achivementId;
 
     @Column(name = "name")
 	private String name;
 
-    @Column(name = "discription")
-    private String discription;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "value")
     private Long value;
@@ -30,16 +36,17 @@ public class UserInformations {
     private Long limit;
 
     @Column(name = "create_date")
-    private Data createDate;
+    private LocalDate createDate;
+
     @PreUpdate
     protected void onUpdate() {
-        createDate = new Date();
+        createDate = LocalDate.now();
     }
 
     @Column(name = "finish_date")
-    private Data finishDate;
-    @PreUpdate
-    protected void onUpdate() {
-        finishDate = new Date();
-    }
+    private LocalDate finishDate;
+//    @PreUpdate
+//    protected void onUpdate() {
+//        finishDate = new LocalDate();
+//    }
 }

@@ -1,4 +1,9 @@
-package entity;
+package green.belka.backend.model;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "achivement_status")
@@ -9,7 +14,7 @@ public class AchivementsStatus {
 
     @Id
     @Column(name = "achivements_status_id")
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @OneToOne(optional=false, mappedBy="status")
     private Long achivementStatusId;
 
