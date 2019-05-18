@@ -12,7 +12,7 @@ public interface MainService {
 
     ResponseData<List<Achievement>> getAchievements();
 
-    ResponseData<Long> addAchievement(Achievement achievement);
+    ResponseData<Long> addAchievement(Achievement achievement, Long userId);
 
     ResponseData<Long> updateAchievement(Achievement achievement);
 

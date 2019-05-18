@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -34,9 +35,12 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public ResponseData<Long> addAchievement(Achievement achievement) {
-        Long id = achievementRepository.save(achievement).getId();
-        return new ResponseData<>(id, ResultCode.OK);
+    public ResponseData<Long> addAchievement(Achievement achievement, Long userId) {
+        User user = userRepository.findById(userId).get();
+        user.getAchievements().add(achievement);
+        user = userRepository.save(user);
+        achievement = user.getAchievements().get(user.getAchievements().size()-1);
+        return new ResponseData<>(achievement.getId(), ResultCode.OK);
     }
 
     @Override

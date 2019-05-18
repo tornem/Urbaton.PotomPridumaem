@@ -19,6 +19,10 @@ public class Achievement {
     @ManyToOne
     private User user;
 
+    @Setter
+    @Getter
+    private String description;
+
 }
 //	@OneToOne(optional = false, mappedBy="id")
 //    private User author;
