@@ -3,7 +3,7 @@
     <div class="filter-wrap">
       <v-text-field
         class="filter-input"
-        label="Введите название ачивки"
+        label="Введите название компании или ачивки"
         v-model="searchQuery"
         solo
       />
@@ -12,6 +12,34 @@
       </svg>
     </div>
     <v-container>
+      <v-expansion-panel
+        v-model="panel"
+        expand
+      >
+        <v-expansion-panel-content
+          v-for="(item, i) in 5"
+          :key="i"
+        >
+          <template v-slot:header>
+            <v-avatar
+              size="70px"
+              color="grey lighten-4"
+              class="company-avatar"
+            >
+              <img :src="`https://picsum.photos/500/300?image=${i * 18 + 10}`" alt="avatar">
+            </v-avatar>
+            <div>Item</div>
+          </template>
+          <v-card>
+            <v-card-text class="grey lighten-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat.
+            </v-card-text>
+          </v-card>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
       <v-layout
         row
         wrap
@@ -129,10 +157,8 @@ export default {
 
       if (searchQuery) {
         achievements = achievements
-          .filter(item =>
-            item.name.toLowerCase().indexOf(searchQuery) > -1
-            || item.author.toLowerCase().indexOf(searchQuery) > -1
-          );
+          .filter(item => item.name.toLowerCase().indexOf(searchQuery) > -1
+            || item.author.toLowerCase().indexOf(searchQuery) > -1);
       }
 
       return achievements;
@@ -143,6 +169,11 @@ export default {
 
 <style lang="scss" scoped>
   $primary-color: #6B54E7;
+
+  .company-avatar {
+    max-width: 70px;
+    margin-right: 20px;
+  }
 
   .achievement-page {
     width: 100%;

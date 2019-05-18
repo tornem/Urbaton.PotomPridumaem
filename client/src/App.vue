@@ -54,6 +54,7 @@ $primary-color: #6B54E7;
 $yellow-color: #FFF246;
 $white-color: #FFFFFF;
 $txt-color: #404040;
+$txt-hover: #e2e2e2;
 
 html, body {
   height: 100%;
@@ -122,7 +123,7 @@ html, body {
     top: 80px;
     right: 30px;
     width: 150px;
-    padding: 15px;
+    padding: 5px 0;
     text-align: center;
     opacity: 0;
     background: white;
@@ -135,9 +136,14 @@ html, body {
 
   a {
     display: block;
-    margin: 0 0 10px;
     font-weight: bold;
     color: $txt-color;
+    padding: 10px 15px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $txt-hover;
+    }
 
     &.router-link-exact-active {
       color: $primary-color;
