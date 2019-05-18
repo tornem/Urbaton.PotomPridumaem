@@ -128,18 +128,6 @@
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
-
-export default {
-  name: 'home',
-  components: {
-    HelloWorld,
-  },
-};
-</script>
-
 <style lang="scss" scoped>
   $primary-color: #6B54E7;
   $yellow-color: #FFF246;
