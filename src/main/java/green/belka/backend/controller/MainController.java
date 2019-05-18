@@ -2,15 +2,12 @@ package green.belka.backend.controller;
 
 import green.belka.backend.MainService;
 import green.belka.backend.model.Achievement;
-import green.belka.backend.model.Achievement;
 import green.belka.backend.model.ResponseData;
 import green.belka.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 public class MainController {
@@ -35,11 +32,19 @@ public class MainController {
     }
 
     @RequestMapping(
+            value = {"/achievement/user/"},
+            method = {RequestMethod.POST}
+    )
+    public ResponseData<Long> addAchievementToUser(@RequestBody Achievement achievement, @RequestParam Long userId){
+        return mainService.addAchievementToUser(achievement, userId);
+    }
+
+    @RequestMapping(
             value = {"/achievement/"},
             method = {RequestMethod.POST}
     )
-    public ResponseData<Long> addAchievement(@RequestBody Achievement achievement, @RequestParam Long userId){
-        return mainService.addAchievement(achievement, userId);
+    public ResponseData<Long> addAchievement(@RequestBody Achievement achievement){
+        return mainService.addAchievement(achievement);
     }
 
 

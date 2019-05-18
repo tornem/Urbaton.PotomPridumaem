@@ -1,9 +1,11 @@
 package green.belka.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -26,6 +28,27 @@ public class Achievement {
     @Setter
     @Getter
     private String description;
+
+    @Getter
+    @Setter
+    private String name;
+
+    @Getter
+    @Setter
+    private Long cost;
+
+    @Getter
+    @Setter
+    private Long status;
+
+    @Getter
+    @Setter
+    @JsonIgnore
+    private LocalDate create_date;
+
+    @Getter
+    @Setter
+    private Long achievement_limit;
 
 }
 //	@OneToOne(optional = false, mappedBy="id")

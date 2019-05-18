@@ -35,7 +35,13 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public ResponseData<Long> addAchievement(Achievement achievement, Long userId) {
+    public ResponseData<Long> addAchievement(Achievement achievement) {
+        Long id = achievementRepository.save(achievement).getId();
+        return new ResponseData<>(id, ResultCode.OK);
+    }
+
+    @Override
+    public ResponseData<Long> addAchievementToUser(Achievement achievement, Long userId) {
         User user = userRepository.findById(userId).get();
 
         if(achievement.getId() != null) {

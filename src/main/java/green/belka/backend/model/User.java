@@ -41,5 +41,5 @@ public class User {
 
     @Getter
     @Setter
-    private Long cost;
+    private Long score;
 }
