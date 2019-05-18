@@ -1,38 +1,63 @@
-<template>
-  <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-        <v-img
-          src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-          aspect-ratio="2.75"
-        ></v-img>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+  <v-container class="rating">
+    <v-layout
+      column
+    >
+      <v-flex xs6>
+        <v-text-field
+          solo
+          label="Regular"
+        ></v-text-field>
+      </v-flex>
 
-        <v-card-title primary-title>
-          <div>
-            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-            <div> {{ card_text }} </div>
-          </div>
-        </v-card-title>
+      <v-flex xs6>
+        <v-expansion-panel>
+          <v-expansion-panel-content
+            v-for="item in users"
+            :key="i"
+          >
 
-        <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+            <template v-slot:header>
+              <div>{{item.title}}</div>
+            </template>
+
+            <v-card>
+              <v-card-text>
+                {{item.text}}
+              </v-card-text>
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        card_text: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'
-      }
-    }
-  }
+export default {
+  data() {
+    return {
+      users: [
+        {
+          title: '1',
+          text: '1',
+        },
+        {
+          title: '2',
+          text: '2',
+        },
+        {
+          title: '3',
+          text: '3',
+        },
+      ],
+    };
+  },
+};
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.rating {
+  max-width: 800px;
+}
 </style>
