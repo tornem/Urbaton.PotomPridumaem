@@ -1,7 +1,12 @@
 <template>
   <v-container class="user">
-    <div v-if="selectedUser.length === 0">
+    <div
+      v-if="selectedUser.length === 0"
+      class="error-block"
+    >
       Пользователь не найден
+
+      <span>:(</span>
     </div>
     <v-layout
       v-else
@@ -178,7 +183,7 @@ export default {
   },
   filters: {
     firstLetter(text) {
-      return text.substr(0, 1).toUpperCase()
+      return text.substr(0, 1).toUpperCase();
     },
   },
   computed: {
@@ -197,41 +202,69 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .user {
-    max-width: 1200px;
+$primary-color: #6B54E7;
+$yellow-color: #FFF246;
+$white-color: #FFFFFF;
 
-    @media (max-width: 1400px) {
-      max-width: 900px;
-    }
-    @media (max-width: 1070px) {
-      max-width: 800px;
-    }
+.error-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  max-width: 600px;
+  margin: 100px auto 0;
+  font-size: 24px;
+  color: $white-color;
+  background-color: $primary-color;
+  border-radius: 24% 76% 56% 44% / 37% 59% 41% 63%;
+
+  span {
+    transform: translate3d(55px, -5px, 0);
+    font-size: 78px;
+    font-weight: bold;
+    color: $yellow-color
   }
-  .user-layout {
-    @media (max-width: 970px) {
-      flex-direction: column;
-    }
+}
+
+.user {
+  margin: 100px auto 0;
+
+  @media (max-width: 1070px) {
+    max-width: 800px;
   }
-  .info,
-  .achievement {
-    width: 50%;
-    @media (max-width: 970px) {
-      width: 100%;
-    }
+}
+
+.user-layout {
+  @media (max-width: 970px) {
+    flex-direction: column;
   }
-  .achievement {
-    max-height: 500px;
-    overflow-y: auto;
+}
+
+.info,
+.achievement {
+  width: 50%;
+  @media (max-width: 970px) {
+    width: 100%;
   }
-  .ratio {
-    display: flex;
-    align-items: center;
-  }
-  .star {
-    font-size: 56px;
-  }
-  .achievement-cost {
-    display: flex;
-    align-items: center;
-  }
+}
+
+.achievement {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.ratio {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  font-size: 56px;
+}
+
+.achievement-cost {
+  display: flex;
+  align-items: center;
+}
 </style>

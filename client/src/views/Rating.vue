@@ -1,21 +1,25 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-  <v-container class="rating">
+  <div class="rating-page">
+    <div class="filter-wrap">
+      <v-text-field
+        class="filter-input"
+        label="Введите название ачивки"
+        v-model="searchQuery"
+        solo
+      />
+      <svg class="down" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M0 0 C 50 100 80 100 100 0 Z"></path>
+      </svg>
+    </div>
     <v-layout
       column
     >
-      <v-flex xs6>
-        <v-text-field
-          solo
-          label="Введите ник пользователя"
-          v-model="searchQuery"
-        ></v-text-field>
-      </v-flex>
-
-      <v-flex xs6>
+      <v-container>
         <v-list
           two-line
           class="users"
         >
+          <h2 class="heading">Рейтинг пользователей</h2>
           <router-link
             class="users__item"
             v-for="(item, i) in filteredRatings"
@@ -43,15 +47,13 @@
 
               <div
                 class="users__rating"
+                title="количество ачивок"
               >
-                <v-rating
-                  value="5"
-                  color="amber"
-                  dense
-                  half-increments
-                  readonly
-                  size="14"
-                ></v-rating>
+                <v-icon
+                  color="yellow darken-2"
+                >
+                  star
+                </v-icon>
                 <div class="ml-2 grey--text text--darken-2">
                   <span>{{item.ratio}}</span>
                 </div>
@@ -61,9 +63,9 @@
             <v-divider></v-divider>
           </router-link>
         </v-list>
-      </v-flex>
+      </v-container>
     </v-layout>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -111,19 +113,52 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.rating {
-  max-width: 800px;
+  $primary-color: #6B54E7;
+.rating-page {
+  width: 100%;
 }
-  .users {
-    &__item {
-      text-decoration: none;
 
-      &:hover > div {
-        background-color: ghostwhite;
-      }
-    }
-    &__rating {
-      display: flex;
+.filter-wrap {
+  position: relative;
+  width:100%;
+  padding: 95px 30px 0;
+  margin-bottom: 100px;
+  background-color: $primary-color;
+
+  svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -100px;
+    margin:  auto;
+    fill: $primary-color;
+  }
+}
+
+.filter-input {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+}
+
+.heading {
+  margin: 0 0 30px;
+  font-size: 32px;
+  line-height: 1.5;
+  font-weight: bold;
+  text-align: left;
+}
+
+.users {
+  &__item {
+    text-decoration: none;
+
+    &:hover > div {
+      background-color: ghostwhite;
     }
   }
+  &__rating {
+    display: flex;
+  }
+}
 </style>
