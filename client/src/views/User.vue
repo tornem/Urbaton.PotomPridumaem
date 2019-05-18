@@ -7,35 +7,72 @@
       v-else
       row
     >
-      <v-flex class="user__info">
-        <!--{{ selectedUser[0] }}-->
-        <v-layout column align-start>
-          <v-flex class="display-3">
-            <v-avatar
-              size="150px"
-              color="green lighten-4"
-            >
-              {{selectedUser[0].username | firstLetter}}
-            </v-avatar>
-            Рейтинг: {{selectedUser[0].ratio}}
+      <v-flex class="info">
+        <v-layout column align-start pa-4>
+          <v-layout row align-center mb-3>
+            <v-flex  class="display-3 mr-4">
+              <v-avatar
+                size="150px"
+                color="green lighten-4"
+              >
+                {{selectedUser.username | firstLetter}}
+              </v-avatar>
+            </v-flex>
+            <v-flex class="display-3">
+              <div
+                class="ratio"
+              >
+                <div class="ml-2 grey--text text--darken-2">
+                  <span>{{selectedUser.ratio}}</span>
+                </div>
+                <v-icon
+                  class="star"
+                  color="yellow darken-2"
+                >
+                  star
+                </v-icon>
+              </div>
+            </v-flex>
+          </v-layout>
+          <v-flex mb-3 class="display-1">
+            {{selectedUser.username}}
           </v-flex>
-          <v-flex class="display-1">
-            {{selectedUser[0].username}}
-          </v-flex>
-          <v-flex class="display-1">
-            {{selectedUser[0].first_name}} {{selectedUser[0].last_name}}
+          <v-flex mb-3 class="display-1">
+            {{selectedUser.first_name}} {{selectedUser.last_name}}
           </v-flex>
         </v-layout>
       </v-flex>
-      <v-flex class="user__achievement">
-        <v-layout column>
-          <v-flex>
-            ачивка
-          </v-flex>
-          <v-flex>
-            ачивка
-          </v-flex>
-        </v-layout>
+
+      <v-flex class="achievement elevation-4">
+        <v-list two-line subheader>
+          <v-list-tile
+            v-for="(item, i) in selectedUser.achievements"
+            :key="item.id"
+            avatar
+          >
+            <v-list-tile-avatar>
+              <img :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`">
+            </v-list-tile-avatar>
+
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+              <v-list-tile-sub-title>{{ item.date }}</v-list-tile-sub-title>
+            </v-list-tile-content>
+
+            <div
+              class="achievement-cost"
+            >
+              <div class="ml-2 grey--text text--darken-2">
+                <span>{{item.cost}}</span>
+              </div>
+              <v-icon
+                color="yellow darken-2"
+              >
+                star
+              </v-icon>
+            </div>
+          </v-list-tile>
+        </v-list>
       </v-flex>
     </v-layout>
   </v-container>
@@ -58,16 +95,55 @@ export default {
             {
               id: 'id1',
               name: 'ачивка номер 1',
+              date: '16 января',
               cost: 15,
             },
             {
               id: 'id2',
               name: 'ачивка номер 2',
+              date: '16 января',
               cost: 15,
             },
             {
               id: 'id3',
               name: 'ачивка номер 2',
+              date: '16 января',
+              cost: 15,
+            },
+            {
+              id: 'id1',
+              name: 'ачивка номер 1',
+              date: '16 января',
+              cost: 15,
+            },
+            {
+              id: 'id2',
+              name: 'ачивка номер 2',
+              date: '16 января',
+              cost: 15,
+            },
+            {
+              id: 'id3',
+              name: 'ачивка номер 2',
+              date: '16 января',
+              cost: 15,
+            },
+            {
+              id: 'id1',
+              name: 'ачивка номер 1',
+              date: '16 января',
+              cost: 15,
+            },
+            {
+              id: 'id2',
+              name: 'ачивка номер 2',
+              date: '16 января',
+              cost: 15,
+            },
+            {
+              id: 'id3',
+              name: 'ачивка номер 2',
+              date: '16 января',
               cost: 15,
             },
           ],
@@ -112,17 +188,35 @@ export default {
     selectedUser() {
       const { users } = this;
       const userId = Number(this.$route.params.id);
-      return users.filter(item => item.user_id === userId);
+      const selectedUser = users.filter(item => item.user_id === userId);
+
+      return selectedUser.length === 0 ? [] : selectedUser[0];
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.user {
-  &__info,
-  &__achievement {
+  .user {
+    max-width: 1200px;
+  }
+  .info,
+  .achievement {
     width: 50%;
   }
-}
+  .achievement {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  .ratio {
+    display: flex;
+    align-items: center;
+  }
+  .star {
+    font-size: 56px;
+  }
+  .achievement-cost {
+    display: flex;
+    align-items: center;
+  }
 </style>
