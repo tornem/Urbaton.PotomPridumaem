@@ -261,4 +261,10 @@ html, body {
     line-height: 1.5;
   }
 }
+
+.achievement-page {
+  .v-list--three-line .v-list__tile {
+    height: auto !important;
+  }
+}
 </style>
