@@ -119,12 +119,16 @@ export default {
 
       if (searchQuery) {
         users = users.filter((item) => {
-
-          if (item.first_name && item.last_name) {
+          if (
+            item.first_name !== null
+            && item.last_name !== null
+            && item.first_name !== undefined
+            && item.last_name !== undefined
+          ) {
             const firstNameValue = item.first_name.toLowerCase().indexOf(searchQuery) > -1;
             const lastNameValue = item.last_name.toLowerCase().indexOf(searchQuery) > -1;
             const fullName = `${item.first_name} ${item.last_name}`;
-            const fullNameValue = fullName.indexOf(searchQuery) > -1;
+            const fullNameValue = fullName.toLowerCase().indexOf(searchQuery) > -1;
 
             return firstNameValue || lastNameValue || fullNameValue;
           }
