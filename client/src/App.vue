@@ -22,7 +22,7 @@
                     <v-icon color="#6B54E7">menu</v-icon>
                   </v-btn>
                 </template>
-                <span>Im A ToolTip</span>
+                <span>Меню</span>
               </v-tooltip>
             </template>
             <v-list>
@@ -118,7 +118,7 @@ html, body {
     }
 
     .nav-wrap {
-      padding: 10px 30px;
+      padding: 10px;
     }
 
     .nav {
@@ -129,7 +129,7 @@ html, body {
   .logo {
     width: 179px;
     padding: 10px;
-    margin: 10px 20px;
+    margin: 10px;
 
     &.hidden {
       visibility: hidden;
@@ -144,7 +144,7 @@ html, body {
 
 .nav-wrap {
   position: relative;
-  padding: 10px 30px;
+  padding: 10px;
   text-align: right;
 
   .v-list__tile {
@@ -249,6 +249,11 @@ html, body {
 
   .v-window {
     margin-top: 20px;
+  }
+
+  .v-card__text {
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
 </style>

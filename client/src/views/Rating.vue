@@ -63,7 +63,7 @@
                   star
                 </v-icon>
                 <div class="ml-2 grey--text text--darken-2">
-                  <span>{{item.score}}</span>
+                  <span>{{item.score || 0}}</span>
                 </div>
               </div>
             </v-list-tile>
