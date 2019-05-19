@@ -68,7 +68,7 @@
                 </v-list-tile>
               </v-list>
               <div v-else>
-                У автора нет ачивок
+                У партнера нет ачивок
               </div>
             </v-card-text>
           </v-card>
