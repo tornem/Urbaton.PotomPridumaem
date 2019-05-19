@@ -49,7 +49,7 @@
                   {{item.first_name}} {{item.last_name}}
                 </v-list-tile-title>
                 <v-list-tile-sub-title>
-                  {{i+1}} место
+                  {{rating[item.id]}} место
                 </v-list-tile-sub-title>
               </v-list-tile-content>
 
@@ -89,6 +89,7 @@ export default {
       users: [],
       searchQuery: '',
       loader: true,
+      rating: {},
     };
   },
   async created() {
@@ -107,6 +108,10 @@ export default {
       }
 
       return 0;
+    });
+
+    users.forEach((item, i) => {
+      this.rating[item.id] = i + 1
     });
 
     this.users.push(...users);
