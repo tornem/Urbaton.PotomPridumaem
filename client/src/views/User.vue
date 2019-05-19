@@ -8,45 +8,36 @@
 
       <span class="error-smile">:(</span>
     </div>
-    <v-layout
+    <section
       v-else
       class="user-layout"
     >
-      <v-flex class="info">
-        <v-layout column align-start pa-4>
-          <v-layout row align-center mb-3>
-            <v-flex  class="display-3 mr-4">
-              <v-avatar
-                size="150px"
-                color="green lighten-4"
-              >
-                {{user.first_name | firstLetter}}
-              </v-avatar>
-            </v-flex>
-            <v-flex class="display-3">
-              <div
-                class="ratio"
-              >
-                <div class="ml-2 grey--text text--darken-2">
-                  <span>{{user.score}}</span>
-                </div>
-                <v-icon
-                  class="star"
-                  color="yellow darken-2"
-                >
-                  star
-                </v-icon>
-              </div>
-            </v-flex>
-          </v-layout>
-          <v-flex mb-3 class="display-1">
-            {{user.first_name}} {{user.last_name}}
-          </v-flex>
-        </v-layout>
-      </v-flex>
+      <div class="info">
+        <v-avatar
+          size="200px"
+          color="#c3c3c3"
+          dark
+          class="user-avatar"
+        >
+          <span class="white--text">
+            {{user.first_name | firstLetter}}{{user.last_name | firstLetter}}
+          </span>
+        </v-avatar>
+        <div class="user-ratio">
+          <span>{{user.score || 0}}</span>
+          <v-icon class="star" color="#FFF246">star</v-icon>
+        </div>
+        <div mb-3 class="user-name">
+          {{user.first_name}} {{user.last_name}}
+        </div>
+      </div>
 
-      <v-flex class="achievement elevation-4">
+      <div class="achievement elevation-4">
         <v-list two-line subheader>
+          <v-toolbar color="#6B54E7" dark>
+            <v-toolbar-title>Полученные ачивки</v-toolbar-title>
+          </v-toolbar>
+
           <template  v-if="user.achievements.length > 0">
             <v-list-tile
               v-for="(item, i) in user.achievements"
@@ -62,26 +53,20 @@
                 <v-list-tile-sub-title>{{ item.date }}</v-list-tile-sub-title>
               </v-list-tile-content>
 
-              <div
-                class="achievement-cost"
-              >
+              <div class="achievement-cost">
                 <div class="ml-2 grey--text text--darken-2">
                   <span>{{item.cost}}</span>
                 </div>
-                <v-icon
-                  color="yellow darken-2"
-                >
-                  star
-                </v-icon>
+                <v-icon color="#FFF246">star</v-icon>
               </div>
             </v-list-tile>
           </template>
-           <v-list-tile>
-             Ачивок еще нет
+           <v-list-tile class="empty">
+             пусто
            </v-list-tile>
         </v-list>
-      </v-flex>
-    </v-layout>
+      </div>
+    </section>
   </v-container>
 </template>
 
@@ -119,6 +104,7 @@ export default {
 $primary-color: #6B54E7;
 $yellow-color: #FFF246;
 $white-color: #FFFFFF;
+$gray-color: #9e9e9e;
 
 .error-block {
   display: flex;
@@ -162,31 +148,73 @@ $white-color: #FFFFFF;
 }
 
 .user-layout {
-  @media (max-width: 970px) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  @media (max-width: 990px) {
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 
-.info,
+.info {
+  position: relative;
+  max-width: 200px;
+  margin-right: 100px;
+
+  @media (max-width: 990px) {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
 .achievement {
-  width: 50%;
-  @media (max-width: 970px) {
+  flex: 1 1 auto;
+  max-height: 500px;
+  overflow-y: auto;
+
+  @media (max-width: 990px) {
     width: 100%;
   }
 }
 
-.achievement {
-  max-height: 500px;
-  overflow-y: auto;
+.user-avatar {
+  font-size: 52px;
 }
 
-.ratio {
+.user-name {
+  font-size: 34px;
+  line-height: 40px;
+}
+
+.user-ratio {
+  position: absolute;
+  top: 0;
+  right: -15px;
   display: flex;
   align-items: center;
+  padding: 5px 0px 5px 15px;
+  font-size: 32px;
+  color: white;
+  background: #6b54e7;
+  border-radius: 49% 51% 73% 27% / 42% 66% 34% 58% ;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),
+  0 2px 2px 0 rgba(0,0,0,.14),
+  0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .star {
-  font-size: 56px;
+  font-size: 40px;
+}
+
+.empty {
+  color: $gray-color;
+
+  & > * {
+    text-align: center;
+  }
 }
 
 .achievement-cost {
