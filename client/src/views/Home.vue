@@ -117,7 +117,7 @@
                 <v-card-text>
                   <p>
                     Например, Вы решили принять участие в акции по озеленению города.
-                    Вы регистрируетесь в нашем телеграм боте <a href="">(ссылка? achiever_bot)</a>.
+                    Вы регистрируетесь в нашем телеграм боте <a href="http://t.me/AchvrBot">t.me/AchvrBot</a>.
                     Выбираете мероприятие по озеленению, находите в списке доступных ачивоек ту, которая
                     Вам понравилась и начинаете её выполнение.
                   </p>
@@ -155,6 +155,16 @@
             </v-tab-item>
           </v-tabs>
         </div>
+        <v-btn
+          large
+          color="#FFF246"
+          href="http://t.me/AchvrBot"
+          target="_blank"
+          round
+          class="big-btn"
+        >
+          Запустить бота
+        </v-btn>
       </div>
     </section>
   </div>
@@ -345,6 +355,15 @@ export default {
     .tabs {
       max-width: 590px;
       width: 100%;
+    }
+
+    .big-btn {
+      font-size: 20px;
+      height: 60px;
+      padding: 0 40px;
+      margin: 50px auto 30px;
+      display: flex;
+      width: 280px;
     }
   }
 

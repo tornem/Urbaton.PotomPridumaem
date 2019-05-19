@@ -3,7 +3,7 @@
     <div class="filter-wrap">
       <v-text-field
         class="filter-input"
-        label="Введите логин пользователя"
+        label="Введите имя или фамилию пользователя пользователя"
         v-model="searchQuery"
         solo
       />
@@ -26,7 +26,7 @@
             :width="7"
             color="#6B54E7"
             indeterminate
-          ></v-progress-circular>
+          />
           <router-link
             class="users__item"
             v-else

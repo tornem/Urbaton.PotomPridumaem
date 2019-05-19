@@ -6,7 +6,7 @@
       :width="7"
       color="#6B54E7"
       indeterminate
-    ></v-progress-circular>
+    />
     <div
       v-else-if="JSON.stringify(user) == '{}'"
       class="error-block"
