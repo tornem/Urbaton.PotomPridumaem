@@ -100,7 +100,7 @@ export default {
     },
   },
   async created() {
-    const id = Number(this.$route.params.id);
+    const id = Number(this.$route.query.userId);
     const user = await this.getDataById('user/', id);
 
     this.user = Object.assign({}, this.user, user);

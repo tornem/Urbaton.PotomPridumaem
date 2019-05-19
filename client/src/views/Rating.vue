@@ -32,7 +32,7 @@
             v-else
             v-for="(item, i) in filteredRatings"
             :key="item.id"
-            :to="`/user/${item.id}`"
+            :to="`/user?userId=${item.id}`"
           >
             <v-list-tile
               avatar
