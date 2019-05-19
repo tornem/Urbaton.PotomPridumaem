@@ -418,7 +418,7 @@ export default {
 
   .filter-input {
     width: 100%;
-    max-width: 1024px;
+    max-width: calc(1024px - 60px);
     margin: auto!important;
   }
 

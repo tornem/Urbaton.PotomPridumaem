@@ -380,7 +380,6 @@ export default {
     }
 
     .tabs {
-      max-width: 590px;
       width: 100%;
     }
 

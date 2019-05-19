@@ -117,10 +117,6 @@ html, body {
       margin: 0 20px;
     }
 
-    .nav-wrap {
-      padding: 10px;
-    }
-
     .nav {
       top: 55px;
     }
@@ -129,7 +125,7 @@ html, body {
   .logo {
     width: 179px;
     padding: 10px;
-    margin: 10px;
+    margin: 10px 20px;
 
     &.hidden {
       visibility: hidden;
@@ -144,7 +140,7 @@ html, body {
 
 .nav-wrap {
   position: relative;
-  padding: 10px;
+  padding: 10px 22px;
   text-align: right;
 
   .v-list__tile {
@@ -180,8 +176,8 @@ html, body {
 }
 
 .container {
-  max-width: 1024px;
-  padding-bottom: 140px !important;
+  max-width: 1024px !important;
+  padding: 16px 30px 140px !important;
   box-sizing: border-box;
 }
 

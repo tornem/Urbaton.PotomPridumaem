@@ -26,9 +26,7 @@
           dark
           class="user-avatar"
         >
-          <span class="white--text">
-            {{user.first_name | firstLetter}}{{user.last_name | firstLetter}}
-          </span>
+          <img :src="`https://picsum.photos/500/300?image=${randomNumber}`" alt="">
         </v-avatar>
         <div class="user-ratio">
           <span>{{user.score || 0}}</span>
@@ -52,7 +50,7 @@
               avatar
             >
               <v-list-tile-avatar>
-                <img :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`">
+                <img :src="item.avatar">
               </v-list-tile-avatar>
 
               <v-list-tile-content>
@@ -97,6 +95,11 @@ export default {
         return text.substr(0, 1).toUpperCase();
       }
       return '';
+    },
+  },
+  computed: {
+    randomNumber() {
+      return Math.floor(Math.random(0, 20)) * 5 + 10;
     },
   },
   async created() {
