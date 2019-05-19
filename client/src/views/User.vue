@@ -99,7 +99,8 @@ export default {
   },
   computed: {
     randomNumber() {
-      return Math.floor(Math.random(0, 20));
+      const rand = 0 + Math.random() * (20 + 1 - 0);
+      return Math.floor(rand) * 5 + 10;
     },
   },
   async created() {
