@@ -20,8 +20,16 @@
           class="users"
         >
           <h2 class="heading">Рейтинг пользователей</h2>
+          <v-progress-circular
+            v-if="loader"
+            :size="70"
+            :width="7"
+            color="#6B54E7"
+            indeterminate
+          ></v-progress-circular>
           <router-link
             class="users__item"
+            v-else
             v-for="(item, i) in filteredRatings"
             :key="item.id"
             :to="`/user/${item.id}`"
@@ -93,6 +101,7 @@ export default {
       ],
       users: [],
       searchQuery: '',
+      loader: true,
     };
   },
   async created() {
@@ -114,6 +123,7 @@ export default {
     });
 
     this.users.push(...users);
+    this.loader = false;
   },
   computed: {
     filteredRatings() {

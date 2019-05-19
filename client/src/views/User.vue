@@ -1,7 +1,14 @@
 <template>
   <v-container class="user">
+    <v-progress-circular
+      v-if="loader"
+      :size="70"
+      :width="7"
+      color="#6B54E7"
+      indeterminate
+    ></v-progress-circular>
     <div
-      v-if="JSON.stringify(user) == '{}'"
+      v-else-if="JSON.stringify(user) == '{}'"
       class="error-block"
     >
       <span>Пользователь не найден</span>
@@ -96,6 +103,7 @@ export default {
   data() {
     return {
       user: {},
+      loader: true,
     };
   },
   filters: {
@@ -111,6 +119,7 @@ export default {
     const user = await this.getDataById('user/', id);
 
     this.user = Object.assign({}, this.user, user);
+    this.loader = false;
   },
 };
 </script>
