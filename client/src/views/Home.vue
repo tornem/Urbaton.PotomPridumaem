@@ -235,6 +235,11 @@ export default {
     margin: auto;
     box-sizing: border-box;
     text-align: left;
+
+    @media (max-width: 768px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 
   .welcome-screen {
@@ -245,6 +250,11 @@ export default {
     background-size: cover;
     color: $white-color;
     box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 
   .welcome-title {

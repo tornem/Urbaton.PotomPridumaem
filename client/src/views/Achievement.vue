@@ -189,7 +189,7 @@ export default {
     }
 
     @media screen and (max-width: 768px) {
-      padding: 65px 30px 0;
+      padding: 65px 20px 0;
     }
   }
 

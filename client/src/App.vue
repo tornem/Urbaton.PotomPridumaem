@@ -112,16 +112,6 @@ html, body {
     background: transparent;
   }
 
-  @media screen and (max-width: 768px) {
-    .logo {
-      margin: 0 20px;
-    }
-
-    .nav {
-      top: 55px;
-    }
-  }
-
   .logo {
     width: 179px;
     padding: 10px;
@@ -134,6 +124,16 @@ html, body {
     svg {
       max-width: 100%;
       fill: $yellow-color;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .logo {
+      margin: 0 10px;
+    }
+
+    .nav {
+      top: 55px;
     }
   }
 }
@@ -150,6 +150,10 @@ html, body {
   .v-btn {
     min-width: auto;
     padding: 0 10px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 12px;
   }
 
   a {
@@ -179,6 +183,11 @@ html, body {
   max-width: 1024px !important;
   padding: 16px 30px 140px !important;
   box-sizing: border-box;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+  }
 }
 
 .content-wrap {
