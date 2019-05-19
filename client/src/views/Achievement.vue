@@ -35,6 +35,7 @@
                   v-for="(achievement, achievementIndex) in author.achievements"
                   :key="achievement.id"
                   avatar
+                  class="achievement-item"
                 >
                   <v-list-tile-avatar>
                     <img :src="`https://picsum.photos/500/300?image=${achievementIndex * 5 + 10}`">
@@ -42,7 +43,7 @@
 
                   <v-list-tile-content>
                     <v-list-tile-title>{{ achievement.name }} - {{ achievement.status }}</v-list-tile-title>
-                    <v-list-tile-sub-title>{{ achievement.description }}</v-list-tile-sub-title>
+                    <v-list-tile-sub-title v-html="achievement.description" class="achievement-description"/>
                   </v-list-tile-content>
 
                   <div
@@ -424,5 +425,18 @@ export default {
     line-height: 1.5;
     font-weight: bold;
     text-align: left;
+  }
+
+  .achievement-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .achievement-description {
+    margin-top: 5px;
   }
 </style>
