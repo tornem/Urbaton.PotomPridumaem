@@ -38,11 +38,11 @@
       </div>
 
       <div class="achievement elevation-4">
-        <v-list two-line subheader>
-          <v-toolbar color="#6B54E7" dark>
-            <v-toolbar-title>Полученные ачивки</v-toolbar-title>
-          </v-toolbar>
+        <v-toolbar color="#6B54E7" dark>
+          <v-toolbar-title>Полученные ачивки</v-toolbar-title>
+        </v-toolbar>
 
+        <v-list two-line subheader class="achievement-list">
           <template  v-if="user.achievements.length > 0">
             <v-list-tile
               v-for="(item, i) in user.achievements"
@@ -199,12 +199,15 @@ $gray-color: #9e9e9e;
 
 .achievement {
   flex: 1 1 auto;
-  max-height: 500px;
-  overflow-y: auto;
 
   @media (max-width: 990px) {
     width: 100%;
   }
+}
+
+.achievement-list {
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 .user-avatar {
