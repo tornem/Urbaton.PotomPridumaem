@@ -33,7 +33,7 @@
             >
               <img :src="`https://picsum.photos/500/300?image=${authorIndex * 18 + 10}`" alt="avatar">
             </v-avatar>
-            <div>{{author.first_name}} {{author.last_name}}</div>
+            <div>{{author.first_name}}</div>
           </template>
           <v-card>
             <v-card-text class="grey lighten-4">
