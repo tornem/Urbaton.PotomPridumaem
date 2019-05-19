@@ -46,7 +46,7 @@
           <template  v-if="user.achievements.length > 0">
             <v-list-tile
               v-for="(item, i) in user.achievements"
-              :key="item.id"
+              :key="item.id + i"
               avatar
             >
               <v-list-tile-avatar>
@@ -99,7 +99,7 @@ export default {
   },
   computed: {
     randomNumber() {
-      return Math.floor(Math.random(0, 20)) * 5 + 10;
+      return Math.floor(Math.random(0, 20));
     },
   },
   async created() {

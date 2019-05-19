@@ -97,24 +97,25 @@ export default {
 
     if (users.length === 0) {
       users = this.tempUsers;
+    } else {
+      users.sort((a, b) => {
+        if (a.score < b.score) {
+          return 1;
+        }
+        if (a.score > b.score) {
+          return -1;
+        }
+
+        return 0;
+      });
+
+      users.forEach((item, i) => {
+        this.rating[item.id] = i + 1
+      });
+
+      this.users.push(...users);
     }
 
-    users.sort((a, b) => {
-      if (a.score < b.score) {
-        return 1;
-      }
-      if (a.score > b.score) {
-        return -1;
-      }
-
-      return 0;
-    });
-
-    users.forEach((item, i) => {
-      this.rating[item.id] = i + 1
-    });
-
-    this.users.push(...users);
     this.loader = false;
   },
   computed: {
