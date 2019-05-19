@@ -317,16 +317,27 @@ export default {
   computed: {
     filteredAuthors() {
       let { authors, searchQuery } = this;
+      let result = [];
       searchQuery = searchQuery.toLowerCase();
 
       if (searchQuery) {
-        authors = authors
-          .filter((author) => {
-            const authorValue = author.author_name.toLowerCase().indexOf(searchQuery) > -1;
-            const achievementValue = this.filteredAchievements(author.achievements);
+        authors.forEach((author) => {
+          const authorValue = author.author_name.toLowerCase().indexOf(searchQuery) > -1;
+          const achievementValue = this.filteredAchievements(author.achievements);
+          const hasAchievementValue = achievementValue.length > 0;
 
-            return authorValue || achievementValue;
-          });
+          if (authorValue || hasAchievementValue) {
+            result = [
+              ...result,
+              {
+                ...author,
+                achievements: hasAchievementValue ? achievementValue : author.achievements,
+              },
+            ];
+          }
+        });
+
+        authors = result;
       }
 
       return authors;
@@ -343,9 +354,9 @@ export default {
           .filter(item => item.name.toLowerCase().indexOf(searchQuery) > -1);
       }
 
-      return filteredAchievements.length !== 0;
+      return filteredAchievements;
     },
-  }
+  },
 };
 </script>
 
