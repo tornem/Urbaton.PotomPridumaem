@@ -209,6 +209,7 @@ $gray-color: #9e9e9e;
 
 .user-avatar {
   font-size: 52px;
+  margin-bottom: 20px;
 }
 
 .user-name {
