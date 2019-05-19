@@ -85,20 +85,7 @@ export default {
   ],
   data() {
     return {
-      tempUsers: [
-        {
-          id: 116467,
-          first_name: 'Богдан',
-          last_name: 'Юрасов',
-          score: 9742,
-        },
-        {
-          id: 113963,
-          first_name: 'Афанасий',
-          last_name: 'Астахов',
-          score: 9485,
-        },
-      ],
+      tempUsers: [],
       users: [],
       searchQuery: '',
       loader: true,
@@ -141,6 +128,7 @@ export default {
 
             return firstNameValue || lastNameValue || fullNameValue;
           }
+
           return false;
         });
       }
