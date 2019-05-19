@@ -45,7 +45,7 @@
                   class="achievement-item"
                 >
                   <v-list-tile-avatar>
-                    <img :src="`https://picsum.photos/500/300?image=${achievementIndex * 5 + 10}`">
+                    <img :src="achievement.avatar">
                   </v-list-tile-avatar>
 
                   <v-list-tile-content>
