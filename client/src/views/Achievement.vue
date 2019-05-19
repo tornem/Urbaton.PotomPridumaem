@@ -41,7 +41,7 @@
                   </v-list-tile-avatar>
 
                   <v-list-tile-content>
-                    <v-list-tile-title>{{ achievement.name }}</v-list-tile-title>
+                    <v-list-tile-title>{{ achievement.name }} - {{ achievement.status }}</v-list-tile-title>
                     <v-list-tile-sub-title>{{ achievement.description }}</v-list-tile-sub-title>
                   </v-list-tile-content>
 
@@ -84,6 +84,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: '16 мая',
+              status: 'выполнено',
             },
             {
               id: 20,
@@ -92,6 +93,7 @@ export default {
               cost: 15,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: 'string(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 30,
@@ -100,6 +102,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: 'string(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 40,
@@ -108,6 +111,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: '16 мая',
+              status: 'выполнено',
             },
             {
               id: 50,
@@ -116,6 +120,7 @@ export default {
               cost: 15,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: 'string(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 60,
@@ -124,6 +129,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: 'string(unix timestamp)',
+              status: 'выполнено',
             },
           ],
         },
@@ -137,6 +143,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: '16 мая',
+              status: 'выполнено',
             },
             {
               id: 21,
@@ -145,6 +152,7 @@ export default {
               cost: 15,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: 'string(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 31,
@@ -152,7 +160,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 41,
@@ -161,6 +170,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: '16 мая',
+              status: 'выполнено',
             },
             {
               id: 51,
@@ -168,7 +178,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 15,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 61,
@@ -176,7 +187,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
           ],
         },
@@ -190,6 +202,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: '16 мая',
+              status: 'выполнено',
             },
             {
               id: 2222,
@@ -197,7 +210,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 15,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 3333,
@@ -205,7 +219,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 4444,
@@ -214,6 +229,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: '16 мая',
+              status: 'выполнено',
             },
             {
               id: 5555,
@@ -221,7 +237,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 15,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 6666,
@@ -229,7 +246,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
           ],
         },
@@ -243,6 +261,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: '16 мая',
+              status: 'выполнено',
             },
             {
               id: 222,
@@ -250,7 +269,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 15,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 333,
@@ -258,7 +278,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 444,
@@ -267,6 +288,7 @@ export default {
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
               creation_date: '16 мая',
+              status: 'выполнено',
             },
             {
               id: 555,
@@ -274,7 +296,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 15,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
             {
               id: 666,
@@ -282,7 +305,8 @@ export default {
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam doloribus eveniet magni pariatur rerum unde veritatis, voluptas. A accusantium asperiores aspernatur doloribus ea eius eum incidunt neque quasi ratione.',
               cost: 58,
               icon: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
-              creation_date: 'string(unix timestamp)',
+              creation_date: 'выполнено(unix timestamp)',
+              status: 'выполнено',
             },
           ],
         },
