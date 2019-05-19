@@ -12,7 +12,7 @@
       </svg>
     </div>
     <v-container>
-      <h2 class="heading">Список авторов</h2>
+      <h2 class="heading">Ачивки партнеров</h2>
       <v-progress-circular
         v-if="loader"
         :size="70"
