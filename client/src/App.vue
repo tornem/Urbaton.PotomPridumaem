@@ -266,5 +266,22 @@ html, body {
   .v-list--three-line .v-list__tile {
     height: auto !important;
   }
+
+  @media screen and (max-width: 768px) {
+    .v-list__tile {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .v-list__tile__content {
+      order: 1;
+      flex: 1 1 auto;
+      width: 100%;
+      margin: 10px 0 0;
+    }
+    .v-list--three-line .v-list__tile__avatar {
+      margin: 0;
+    }
+  }
 }
 </style>
